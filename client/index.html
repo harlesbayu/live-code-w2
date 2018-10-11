@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+  <script src=https://code.jquery.com/jquery-3.3.1.js crossorigin=anonymous integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="./assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="app">
+
+      <!-- Navigation -->
+      <div class="navbar bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" style="color:white; cursor:pointer" v-on:click="home">Livecode 1</a>
+          <div class="header-right">
+            <div v-if="isLogin == false">
+              <input type="text" placeholder="email" v-model="email">
+              <input type="password" placeholder="password" v-model="password">
+              <button v-on:click="login">Login</button>
+            </div>
+            <div v-else>
+              <button v-on:click="logout">Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div class="container">
+        <div class="alert alert-success" role="alert" v-if="boxMsgSuccessLogin">
+          {{ msgSuccessLogin }} <button style="float:right" v-on:click="closeMsgSuccess">close</button>
+        </div>
+        <div class="alert alert-danger" role="alert"  v-if="boxMsgFailedLogin">
+          {{ msgFailedLogin }} <button style="float:right" v-on:click="closeMsgfailed">close</button>
+        </div>
+      </div>
+      <!-- Page Content -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div v-if="isLogin">
+              <h4>Add new Event</h4>
+              <div class="list-group">
+                <!-- <form> -->
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Event" v-model="eventName">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Location" v-model="eventLocation">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Address" v-model="eventAddress">
+                  </div>
+                  <button type="submit" class="btn btn-default" v-on:click="createEvent">Submit</button>
+                <!-- </form> -->
+              </div>
+
+              <hr>
+
+              <h4>Search</h4>
+              <div class="list-group">
+                <!-- <form> -->
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search..." v-model="searchEventName">
+                  </div>
+                  <button type="submit" class="btn btn-default" v-on:click="searchEvent">Submit</button>
+                <!-- </form> -->
+              </div>
+              <hr>
+              <h4>Maps</h4>
+            </div>
+          </div>
+          <!-- /.col-lg-3 -->
+  
+          <div class="col-lg-9">
+            <div class="row">
+              <div class="col-lg-4 col-sm-6 portfolio-item" v-for="(event, index) in events" :key="index">
+                <div class="card h-70">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="#">{{ event.name }}</a>
+                    </h4>
+                    <div>{{ event.location }}</div>
+                    <div>{{ event.address }}</div>
+                    <div style="color:blue">view maps</div>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+  
+        </div>
+  
+      </div>
+      <!-- /.container -->
+  
+      <!-- Footer -->
+      <footer class="py-5 bg-dark">
+        <div class="container">
+          <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        </div>
+        <!-- /.container -->
+      </footer>
+
+</div>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.js"></script> -->
+  
+  <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
