@@ -17,8 +17,17 @@
   <script src=https://code.jquery.com/jquery-3.3.1.js crossorigin=anonymous integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="./assets/css/style.css" rel="stylesheet">
-</head>
 
+  <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 350px;
+        width: 250px;
+      }
+  
+  </style>
+</head>
 <body>
 
 <div id="app">
@@ -83,6 +92,7 @@
               </div>
               <hr>
               <h4>Maps</h4>
+              <div id="map"></div>
             </div>
           </div>
           <!-- /.col-lg-3 -->
@@ -123,8 +133,21 @@
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script> -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.js"></script> -->
+
+  <script>
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -6.205642, lng: 106.845101},
+        zoom: 12
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvr5uNo3kGCjmXBPvvfK-8O1FBqmRrjz8&callback=initMap"
+  async defer></script>
   
   <script src="./assets/js/main.js"></script>
+  
 </body>
 
 </html>
