@@ -15,6 +15,8 @@ var app = new Vue({
 
     isLogin: false,
 
+    // addressMap: '',
+
     boxMsgSuccessLogin: false,
     boxMsgFailedLogin: false,
     msgSuccessLogin: '',
@@ -117,6 +119,10 @@ var app = new Vue({
 
     home: function () {
       this.getAlldataEvent()
+    },
+
+    getAddress: function () {
+      console.log(this.addressMap)
     },
 
     closeMsgSuccess: function () {
